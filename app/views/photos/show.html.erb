@@ -1,0 +1,18 @@
+<div class="container">
+  <div class='row'>
+    <div class='photo_view'>
+      <%=  link_to @photo.image_id.url, 'data-lightbox': @photo.image_id do %>
+        <%= image_tag @photo.image_id.to_s %>
+      <% end %>
+    </div>
+    <div>
+      <%= @photo.title %>
+      <%= @photo.caption %>
+      <%= @exif.exposure_time.to_s %>
+      <%= @exif.f_number.to_f.to_s %>
+      <%= @exif.focal_length.to_i %>
+      <%= @exif.iso_speed_ratings %>
+      <%= @exif.date_time_original %>
+    </div>
+  </div>
+</div>
