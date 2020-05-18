@@ -67,7 +67,7 @@ gem 'carrierwave', '>= 2.0.0.rc', '< 3.0'
 gem 'mini_magick'
 gem 'exifr'
 gem 'jquery-rails'
-
+gem 'bootstrap', '~> 4.1.1'
 
 gem 'dotenv-rails'
 group :production do

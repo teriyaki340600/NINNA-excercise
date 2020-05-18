@@ -13,6 +13,45 @@
       <%= @exif.focal_length.to_i %>
       <%= @exif.iso_speed_ratings %>
       <%= @exif.date_time_original %>
+      <h2><%= @photo.comments.count %>件コメント</h2>
+      <ol>
+        <% @photo.comments.each do |comment|%>
+          <li class="comment">
+            <div class="comment-avatar">
+            </div>
+            <div class="comment-text">
+              <%= comment.user.name %>
+              <span class="comment-meta">
+                <span class="comment-date"><%= comment.created_at.strftime('%Y/%m/%d') %></span>
+              </span>
+              <div class="comment-entry"><%= comment.comment %></div>
+            </div>
+          </li>
+        <% end %>
+        <%= form_for [@photo, @comment] do |f| %>
+          <div class="row">
+            <div class="col-sm-12">
+              <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+            </div>
+          </div>
+          <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+        <% end %>
+      </ol>
+      <% if @photo.liked_by?(current_user) %>
+        <li>
+          <%= link_to photo_likes_path(@photo), method: :delete do %>
+          <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+          <%= @photo.likes.count %> いいね
+          <% end %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to photo_likes_path(@photo), method: :post do %>
+          <i class="fa fa-heart-o" aria-hidden="true"></i>
+          <%= @photo.likes.count %> いいね
+          <% end %>
+        </li>
+      <% end %>
     </div>
   </div>
 </div>

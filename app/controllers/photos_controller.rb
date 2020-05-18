@@ -20,7 +20,12 @@ class PhotosController < ApplicationController
   def index
   end
 
+  def edit
+    @photo = Photo.find(params[:id])
+  end
+
   def show
+    @comment = Comment.new
     @photo = Photo.find(params[:id])
     require 'exifr/jpeg'
     @exif = EXIFR::JPEG::new(Rails.root.to_s + '/public' + @photo.image_id.to_s)
