@@ -1,6 +1,7 @@
 class PhotosController < ApplicationController
 
   def top
+    @photos = Photo.all
   end
 
   def new
@@ -20,10 +21,24 @@ class PhotosController < ApplicationController
   def index
   end
 
+  def edit
+    @photo = Photo.find(params[:id])
+  end
+
   def show
+    @comment = Comment.new
     @photo = Photo.find(params[:id])
     require 'exifr/jpeg'
     @exif = EXIFR::JPEG::new(Rails.root.to_s + '/public' + @photo.image_id.to_s)
+  end
+
+  def destroy
+    @photo = Photo.find(params[:id])
+    if @photo.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
   end
 
   private
