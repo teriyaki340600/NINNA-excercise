@@ -2,85 +2,25 @@
 <html>
   <head>
     <%= csrf_meta_tags %>
-
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript"></script>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript"></script>
+    <script src="https://kit.fontawesome.com/89683b7c07.js" crossorigin="anonymous"></script>
     <title>NINNA</title>
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,600,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 
   <body>
+    <div class="wrapper">
+      <%= render 'layouts/header' %>
 
-    <div class="header" id="header">
-      <nav class="navbar navbar-main navbar-shadow" role="navigation" id="slide-nav">
-        <div class="container relative">
-          <div class="navbar-header">
-            <a class="navbar-logo" href="/">
+        <%= yield %>
 
-            </a>
-
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </div>
-          <div id="slidemenu">
-            <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
-	      	  	<li class="">
-                <a href="">
-                  <span>新規登録</span>
-                </a>
-              </li>
-              <li class="">
-                <a href="">
-                  <span>ログイン</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+      <%= render 'layouts/footer' %>
     </div>
-
-    <%= yield %>
-
-   <footer class="footer style-2">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3">
-            <div class="col">
-              <br>
-              <p class="no-margin" style="font-size: 11px;">
-              <br>
-              善良な市民同士で無差別に食欲を煽るSNS
-          </p>
-
-
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="col">
-              <h4>Link</h4>
-              <ul>
-                <li>
-                  <a href="" title="About">会社概要</a>
-                </li>
-                <li>
-                  <a href="" title="License informations">プライバシーポリシー</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-
   </body>
 </html>

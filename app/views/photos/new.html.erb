@@ -1,25 +1,41 @@
-<%= form_for(@photo, url: photos_path) do |f| %>
-  <div class="row">
-    <div class="col-sm-12">
-      <%= f.file_field :image_id %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="form-group has-icon">
-        <label class="control-label sr-only">Title</label>
-        <%= f.text_field :title, class:"form-control", placeholder:"Title" %>
-        <span class="fa fa-building form-control-icon" aria-hidden="true"></span>
+<div class="container">
+  <%= form_for(@photo, url: photos_path) do |f| %>
+    <div class="row" style="margin-top: 20px;">
+      <div class="col-6">
+        <div class="image-preview">
+          <% if @photo.image_id.present? %>
+            <%= image_tag @photo.image_id, id: :img_prev %>
+          <% else %>
+            <%= image_tag "no-img.jpg", id: :img_prev %>
+          <% end %>
+        </div>
+        <%= f.file_field :image_id, id: :user_img %>
+      </div>
+      <div class="col-6">
+        <div class="form-group img-upload">
+          <%= f.label :title, "TITLE" %>
+          <%= f.text_field :title, class:"form-control", placeholder:"Title" %>
+          <%= f.label :caption, "CAPTION" %>
+          <%= f.text_area :caption, class:"form-control", rows:"2", placeholder:"impression here" %>
+          <%= f.submit "UPLOAD", class:"btn btn-block" %>
+        </div>
       </div>
     </div>
-    <div class="col-sm-6">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-12">
-      <%= f.text_area :caption, class:"form-control", rows:"3", placeholder:"コメントここに" %>
-    </div>
-  </div>
-  <hr>
-  <%= f.submit "送信", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
-<% end %>
+  <% end %>
+</div>
+<script type="text/javascript">
+  $(function() {
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+    $('#img_prev').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#user_img").change(function(){
+        readURL(this);
+    });
+  });
+</script>

@@ -1,57 +1,116 @@
+<div class='row' style="background-color: #333333; padding: 10px 0px; margin-bottom: 20px;">
+  <div class='photo_view'>
+    <%=  link_to @photo.image_id.url, 'data-lightbox': @photo.image_id do %>
+      <%= image_tag @photo.image_id.to_s %>
+    <% end %>
+  </div>
+</div>
 <div class="container">
   <div class='row'>
-    <div class='photo_view'>
-      <%=  link_to @photo.image_id.url, 'data-lightbox': @photo.image_id do %>
-        <%= image_tag @photo.image_id.to_s %>
-      <% end %>
+    <div class="col-6">
+      <div class="photo-info1">
+        <ul>
+          <li><h2><%= @photo.title %></h2></li>
+          <li><%= @photo.caption %></li>
+          <li><strong><%= @photo.user.name %></strong></li>
+        </ul>
+      </div>
+      <div class="photo-info2">
+        <table>
+          <tr>
+            <td>BODY</td>
+            <td>NIKON D600</td>
+          </tr>
+          <tr>
+            <td>LENS</td>
+            <td>AF-S NIKKOR 70-200 f2.8g Ⅱ</td>
+          </tr>
+          <tr>
+            <td>　</td>
+            <td>　</td>
+          </tr>
+          <tr>
+            <td>ISO</td>
+            <td><%= @exif.iso_speed_ratings %></td>
+          </tr>
+          <tr>
+            <td>SHUTTER SPEED</td>
+            <td><%= @exif.exposure_time.to_s %>s</td>
+          </tr>
+          <tr>
+            <td>F-NUMBER</td>
+            <td><%= @exif.f_number.to_f.to_s %></td>
+          </tr>
+          <tr>
+            <td>FOCAL LENGTH</td>
+            <td><%= @exif.focal_length.to_i %>mm</td>
+          </tr>
+          <tr>
+            <td>WHITE BALANCE</td>
+            <td><%= @exif.white_balance %></td>
+          </tr>
+          <tr>
+            <td>SIZE</td>
+            <td><%= @exif.pixel_x_dimension %> x <%= @exif.pixel_y_dimension %></td>
+          </tr>
+          <tr>
+            <td>SHOOTING DATE</td>
+            <td>
+              <% if @exif.date_time_original %>
+                <%= @exif.date_time_original.strftime("%Y年%m月%d日 %-H時%M分") %>
+              <% else %>
+                <p></p>
+              <% end %>
+              </td>
+          </tr>
+        </table>
+      </div>
     </div>
-    <div>
-      <%= @photo.title %>
-      <%= @photo.caption %>
-      <%= @exif.exposure_time.to_s %>
-      <%= @exif.f_number.to_f.to_s %>
-      <%= @exif.focal_length.to_i %>
-      <%= @exif.iso_speed_ratings %>
-      <%= @exif.date_time_original %>
-      <h2><%= @photo.comments.count %>件コメント</h2>
-      <ol>
-        <% @photo.comments.each do |comment|%>
-          <li class="comment">
-            <div class="comment-avatar">
-            </div>
-            <div class="comment-text">
-              <%= comment.user.name %>
-              <span class="comment-meta">
-                <span class="comment-date"><%= comment.created_at.strftime('%Y/%m/%d') %></span>
-              </span>
-              <div class="comment-entry"><%= comment.comment %></div>
-            </div>
+    <div class="col-6">
+      <div class="like-pv">
+        <% if @photo.user_id == current_user.id %>
+          <%= link_to 'DELETE', photo_path(@photo),  method: :delete, data: { confirm: 'Do you really want to delete？' }, class: "btn btn-danger badge-pill" %>
+        <% end %>
+        <% if @photo.liked_by?(current_user) %>
+          <li>
+            <%= link_to photo_likes_path(@photo), method: :delete do %>
+            <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+            <%= @photo.likes.count %>
+            <% end %>
+          </li>
+          <% else %>
+          <li>
+            <%= link_to photo_likes_path(@photo), method: :post do %>
+            <i class="fa fa-heart-o" aria-hidden="true"></i>
+            <%= @photo.likes.count %>
+            <% end %>
           </li>
         <% end %>
-        <%= form_for [@photo, @comment] do |f| %>
-          <div class="row">
-            <div class="col-sm-12">
-              <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
-            </div>
-          </div>
-          <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
-        <% end %>
-      </ol>
-      <% if @photo.liked_by?(current_user) %>
-        <li>
-          <%= link_to photo_likes_path(@photo), method: :delete do %>
-          <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-          <%= @photo.likes.count %> いいね
+      </div>
+      <div class="comment-section">
+        <div class="comment-index">
+           <strong><%= @photo.comments.count %> Comments</strong>
+          <table>
+            <% @photo.comments.each do |comment|%>
+            <tr>
+              <td rowspan="2"><%= image_tag 'sample-author5.jpg' %></td>
+              <td><%= comment.comment %></td>
+              <td>　</td>
+            </tr>
+            <tr>
+              <td><%= comment.user.name %></td>
+              <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+            </tr>
+            <% end %>
+          </table>
+        </div>
+        <div class="comment-submit">
+          <%= form_for [@photo, @comment] do |f| %>
+            <%= f.text_area :comment, rows:'2', class: "form-control",placeholder: "comments here" %>
+            <%= f.submit "SEND", class: "btn btn-sm btn-outline-dark badge-pill comment-btn" %>
           <% end %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to photo_likes_path(@photo), method: :post do %>
-          <i class="fa fa-heart-o" aria-hidden="true"></i>
-          <%= @photo.likes.count %> いいね
-          <% end %>
-        </li>
-      <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
