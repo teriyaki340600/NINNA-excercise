@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Camera.create!(name: "D500", 
+              maker: "NIKON", 
+              introduction: "高速連写が売りです", 
+              image_id: 
+              File.open("./app/assets/images/D500.jpg"))

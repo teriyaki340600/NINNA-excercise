@@ -3,9 +3,16 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   #root 'photos#top'
   resources :photos, only: [:top, :new, :create, :index, :show, :destroy, :edit] do
-    resource :comments, only: [:create]
+    resource :comments, only: [:create, :destroy]
     resource :likes, only: [:create, :destroy]
   end
+
+  resources :cameras, only: [:show] do
+    resource :reviews, only: [:create, :destroy]
+  end
+
+  resources :users, only: [:show, :update, :edit, :destroy]
+
   root 'photos#top'
 
 end

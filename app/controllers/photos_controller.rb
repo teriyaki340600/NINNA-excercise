@@ -19,6 +19,8 @@ class PhotosController < ApplicationController
   end
 
   def index
+    @photo_ranks_pop = Photo.joins(:accesses).merge(Access.limit(8).order(number: :desc))
+    @photo_ranks_latest = Photo.all
   end
 
   def edit
@@ -26,6 +28,10 @@ class PhotosController < ApplicationController
   end
 
   def show
+    Access.transaction do
+      abc = Access.find_or_create_by!(photo_id: params[:id])
+      abc.increment!(:number)
+    end
     @comment = Comment.new
     @photo = Photo.find(params[:id])
     require 'exifr/jpeg'
@@ -45,5 +51,4 @@ class PhotosController < ApplicationController
   def photo_params
     params.require(:photo).permit(:title, :image_id, :caption)
   end
-
 end

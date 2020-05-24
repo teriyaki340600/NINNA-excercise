@@ -1,0 +1,64 @@
+// Place all the styles related to the cameras controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.devise-detail {
+  text-align: center;
+  padding-top: 40px;
+}
+
+.devise-img {
+  text-align: center;
+}
+
+.devise-img img{
+  width: 70%;
+}
+
+.devise-name {
+  margin-bottom: 30px;
+}
+
+.devise-sub {
+  margin-bottom: 30px;
+}
+
+.devise-sub {
+  text-align: center;
+}
+
+.level3 {
+  color: white;
+  background-color: #CCCC00;
+  width: 30%;
+  margin: 0px auto;
+}
+
+.sub-favorite .btn {
+  width: 50%;
+  margin-top: 5px;
+}
+
+.number-of-reviews {
+  border-bottom: solid 1px grey;
+  width: 90%;
+  margin: 20px 0px 20px 0px;
+}
+
+.review {
+  margin-top: 30px;
+}
+
+.review-area {
+  width: 90%;
+}
+
+.review-index img {
+  max-width: 100%;
+  width: 60px;
+  margin: auto;
+}
+
+.review-index td {
+  padding: 4px 2px;
+}

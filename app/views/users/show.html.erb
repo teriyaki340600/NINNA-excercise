@@ -1,0 +1,67 @@
+<div class="show">
+  <div class="container show-container">
+    <div class="row">
+      <h3>MY ACOUNT</h3>
+    </div>
+    <div class="row myacount">
+      <div class="col-3">
+        <h4>登録情報</h4>
+      </div>
+      <div class="col-7 mytable">
+        <table>
+          <tr>
+            <td>NAME</td>
+            <td><%= @user.name %></td>
+          </tr>
+          <tr>
+            <td>POST CODE</td>
+            <td><%= @user.post_code %></td>
+          </tr>
+          <tr>
+            <td>ADDRESS</td>
+            <td><%= @user.address %></td>
+          </tr>
+          <tr>
+            <td>PHONE No.</td>
+            <td><%= @user.phone_number %></td>
+          </tr>
+          <tr>
+            <td>E-MAIL</td>
+            <td><%= @user.email %></td>
+          </tr>
+          <tr>
+            <td>CREDIT CARD</td>
+            <td>**** **** **** **98</td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-2 acount-edit">
+        <button type="button" class="btn btn-outline-dark badge-pill acount-button">　EDIT　</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <h4>サブスクリプション</h4>
+      </div>
+      <div class="col-7 mytable">
+        <table>
+          <tr>
+            <td>MONTHLY</td>
+            <td>5500 円</td>
+          </tr>
+          <tr>
+            <td>NEXT PAYMENT</td>
+            <td>2020/06/09</td>
+          </tr>
+          <tr>
+            <td>IN USE</td>
+            <td>機材画像・名前</td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-2 acount-edit">
+        <button type="button" class="btn btn-success badge-pill acount-button">RETURN</button>
+      </div>
+    </div>
+  </div>
+</div>

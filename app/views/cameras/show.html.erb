@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row" style="margin-top: 20px;">
+    <div class="col-7 devise-img">
+      <%= image_tag @camera.image_id.to_s %>
+    </div>
+    <div class="col-5 devise-detail">
+      <div class="devise-name">
+        <strong><%= @camera.maker %></strong>
+        <h1><%= @camera.name %></h1>
+      </div>
+      <div class="devise-sub">
+        <p class="level3">Lv.3</p>
+        <p>Lv.3は月額5000円で対象機種借り放題<br>往復送料無料</p>
+      </div>
+      <div class="sub-favorite">
+        <button type="button" class="btn btn-primary btn-lg badge-pill">RENTAL</button>
+        <button type="button" class="btn btn-outline-info btn-lg badge-pill">FAVORITE</button>
+      </div>
+    </div>
+  </div>
+  <div class="row col-8 offset-2 review">
+    <div class="number-of-reviews">
+      <h3><%= @camera.reviews.count %> reviews</h3>
+    </div>
+    <div class="review-area">
+      <div class="review-index">
+        <table>
+          <% @camera.reviews.each do |review|%>
+          <tr>
+            <td rowspan="2"><%= image_tag 'sample-author5.jpg' %></td>
+            <td><%= review.comment %></td>
+            <td>　</td>
+          </tr>
+          <tr>
+            <td><%= review.user.name %></td>
+            <td><%= review.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+      <div class="review-submit">
+          <%= form_for [@camera, @review] do |f| %>
+            <%= f.text_area :comment, rows:'2', class: "form-control", placeholder: "review here" %>
+            <%= f.submit "SEND", class: "btn btn-sm btn-outline-dark badge-pill comment-btn" %>
+          <% end %>
+        </div>
+    </div>
+  </div>
+</div>
+
