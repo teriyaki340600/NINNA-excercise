@@ -30,8 +30,10 @@
             <td rowspan="2"><%= image_tag review.user.image_id.to_s %></td>
             <td><%= review.comment %></td>
             <td>
-              <% if review.user_id == current_user.id %>
-                <%= link_to 'DELETE', review_path(review),  method: :delete, data: { confirm: 'Do you really want to delete？' }, class: "btn btn-danger badge-pill" %>
+              <% if user_signed_in? %>
+                <% if review.user_id == current_user.id %>
+                  <%= link_to 'DELETE', camera_review_path(review.camera.id, review.id),  method: :delete, data: { confirm: 'Do you really want to delete？' }, class: "btn btn-danger badge-pill" %>
+                <% end %>
               <% end %>
             </td>
           </tr>

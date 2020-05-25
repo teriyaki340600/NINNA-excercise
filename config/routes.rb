@@ -8,11 +8,11 @@ Rails.application.routes.draw do
   end
 
   resources :cameras, only: [:show] do
-    resource :reviews, only: [:create, :destroy]
+    resources :reviews, only: [:create, :destroy]
   end
 
   resources :magnifiers, only: [:show] do
-    resource :reviews, only: [:create, :destroy]
+    resources :reviews, only: [:create, :destroy]
   end
 
   resources :users, only: [:show, :update, :edit, :destroy]
