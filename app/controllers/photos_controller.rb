@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-
+  before_action :authenticate_user!, except: %i[index show top]
   def top
     @photos = Photo.all
   end

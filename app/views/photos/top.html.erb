@@ -4,7 +4,15 @@
       <strong>無料で写真を投稿・共有。<br>機材のサブスクも月3900円〜。</strong>
     </div>
     <div style="margin-left: 90px;">
-      <button type="button" class="btn btn-lg btn-light badge-pill">　　SIGN UP　　</button>
+      <% if user_signed_in? %>
+        <%= link_to user_path(current_user.id) do%>
+          <button type="button" class="btn btn-lg btn-light badge-pill">　MY PAGE　</button>
+        <% end %>
+      <% else %>
+        <%=link_to new_user_registration_path do%>
+          <button type="button" class="btn btn-lg btn-light badge-pill">　　SIGN UP　　</button>
+        <% end %>
+      <% end %>
     </div>
   </div>
   <div class="container">

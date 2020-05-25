@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row" style="margin-top: 20px;">
     <div class="col-7 devise-img">
-      <%= image_tag @camera.image_id.to_s %>
+      <%= image_tag @magnifier.image_id.to_s %>
     </div>
     <div class="col-5 devise-detail">
       <div class="devise-name">
-        <strong><%= @camera.maker %></strong>
-        <h1><%= @camera.name %></h1>
+        <strong><%= @magnifier.maker %></strong>
+        <h1><%= @magnifier.name %></h1>
       </div>
       <div class="devise-sub">
         <p class="level3">Lv.3</p>
@@ -20,20 +20,16 @@
   </div>
   <div class="row col-8 offset-2 review">
     <div class="number-of-reviews">
-      <h3><%= @camera.reviews.count %> reviews</h3>
+      <h3><%= @magnifier.reviews.count %> reviews</h3>
     </div>
     <div class="review-area">
       <div class="review-index">
         <table>
-          <% @camera.reviews.each do |review|%>
+          <% @magnifier.reviews.each do |review|%>
           <tr>
             <td rowspan="2"><%= image_tag review.user.image_id.to_s %></td>
             <td><%= review.comment %></td>
-            <td>
-              <% if review.user_id == current_user.id %>
-                <%= link_to 'DELETE', review_path(review),  method: :delete, data: { confirm: 'Do you really want to delete？' }, class: "btn btn-danger badge-pill" %>
-              <% end %>
-            </td>
+            <td>　</td>
           </tr>
           <tr>
             <td><%= review.user.name %></td>
@@ -43,7 +39,7 @@
         </table>
       </div>
       <div class="review-submit">
-          <%= form_for [@camera, @review] do |f| %>
+          <%= form_for [@magnifier, @review] do |f| %>
             <%= f.text_area :comment, rows:'2', class: "form-control", placeholder: "review here" %>
             <%= f.submit "SEND", class: "btn btn-sm btn-outline-dark badge-pill comment-btn" %>
           <% end %>

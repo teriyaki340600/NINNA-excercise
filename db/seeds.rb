@@ -10,3 +10,9 @@ Camera.create!(name: "D500",
               introduction: "高速連写が売りです", 
               image_id: 
               File.open("./app/assets/images/D500.jpg"))
+
+Magnifier.create!(name: "AF-S NIKKOR 24mm f/1.4G ED", 
+              maker: "NIKON", 
+              introduction: "美しいボケ味を発揮", 
+              image_id: 
+              File.open("./app/assets/images/NIK24mm1.4.jpg"))

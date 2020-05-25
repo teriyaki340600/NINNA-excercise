@@ -1,10 +1,11 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     camera = Camera.find(params[:camera_id])
     review = current_user.reviews.new(review_params)
     review.camera_id = camera.id
-    review.save
+    review.save!
     redirect_to camera_path(camera)
   end
 

@@ -1,0 +1,45 @@
+<div class="show">
+  <div class="container show-container">
+    <div class="row">
+      <h3>EDIT MY ACCOUNT</h3>
+    </div>
+    <div class="row myacount">
+      <div class="col-3">
+        <h4>登録情報</h4>
+      </div>
+        <div class="col-7 mytable">
+          <%= form_for (@user) do |f| %>
+          <table>
+            <tr>
+              <td>NAME</td>
+              <td><%= f.text_field :name, autofocus: true, autocomplete: "name" %></td>
+            </tr>
+            <tr>
+              <td>POST CODE</td>
+              <td><%= f.text_field :post_code, autofocus: true, autocomplete: "post_code" %></td>
+            </tr>
+            <tr>
+              <td>ADDRESS</td>
+              <td><%= f.text_field :address, autofocus: true, autocomplete: "address" %></td>
+            </tr>
+            <tr>
+              <td>PHONE No.</td>
+              <td><%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %></td>
+            </tr>
+            <tr>
+              <td>E-MAIL</td>
+              <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+            </tr>
+            <tr>
+              <td>CREDIT CARD</td>
+              <td>**** **** **** **98</td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-2 acount-edit">
+          <%= f.submit '　SAVE　', class: "btn btn-outline-danger badge-pill acount-button" %>
+        </div>
+          <% end %>
+    </div>
+  </div>
+</div>

@@ -18,7 +18,7 @@
             <% @photo_ranks_pop.each do |photo|%>
             <div class="image-box" style="width: 33%; padding: 10px;">
               <div class="image">
-                <%=link_to photo_path(photo) do%>
+                <%= link_to photo_path(photo) do%>
                   <%= image_tag photo.image_id.to_s %>
                 <% end %>
               </div>
