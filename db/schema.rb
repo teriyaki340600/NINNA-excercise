@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_24_125154) do
+ActiveRecord::Schema.define(version: 2020_05_26_073734) do
 
   create_table "accesses", force: :cascade do |t|
     t.integer "photo_id"
@@ -19,13 +19,19 @@ ActiveRecord::Schema.define(version: 2020_05_24_125154) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "camera_makers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "cameras", force: :cascade do |t|
     t.string "name"
-    t.string "maker"
     t.text "introduction"
     t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "camera_maker_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -45,7 +51,6 @@ ActiveRecord::Schema.define(version: 2020_05_24_125154) do
 
   create_table "magnifiers", force: :cascade do |t|
     t.string "name"
-    t.string "maker"
     t.text "introduction"
     t.string "image_id"
     t.datetime "created_at", null: false
@@ -60,6 +65,9 @@ ActiveRecord::Schema.define(version: 2020_05_24_125154) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "choice"
+    t.integer "camera_id"
+    t.integer "magnifier_id"
+    t.integer "camera_maker_id"
   end
 
   create_table "reviews", force: :cascade do |t|

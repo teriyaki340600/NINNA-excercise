@@ -33,6 +33,16 @@
             <td>CREDIT CARD</td>
             <td>**** **** **** **98</td>
           </tr>
+          <tr>
+            <td>PROFILE IMG</td>
+            <td>
+              <% if @user.image_id.present? %>
+                <%= image_tag @user.image_id.to_s, id: :img_prev, class: "profile-img" %>
+              <% else %>
+                <%= image_tag "no_image.jpg", id: :img_prev, class: "profile-img" %>
+              <% end %>
+            </td>
+          </tr>
         </table>
       </div>
       <div class="col-2 acount-edit">

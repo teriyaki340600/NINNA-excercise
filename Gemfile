@@ -68,7 +68,7 @@ gem 'mini_magick'
 gem 'exifr'
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
-gem 'impressionist'
+gem 'kaminari', '~> 0.17.0'
 
 gem 'dotenv-rails'
 group :production do

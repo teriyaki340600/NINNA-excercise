@@ -3,43 +3,54 @@
     <div class="row">
       <h3>EDIT MY ACCOUNT</h3>
     </div>
+    <%= form_for (@user) do |f| %>
     <div class="row myacount">
       <div class="col-3">
         <h4>登録情報</h4>
       </div>
-        <div class="col-7 mytable">
-          <%= form_for (@user) do |f| %>
-          <table>
-            <tr>
-              <td>NAME</td>
-              <td><%= f.text_field :name, autofocus: true, autocomplete: "name" %></td>
-            </tr>
-            <tr>
-              <td>POST CODE</td>
-              <td><%= f.text_field :post_code, autofocus: true, autocomplete: "post_code" %></td>
-            </tr>
-            <tr>
-              <td>ADDRESS</td>
-              <td><%= f.text_field :address, autofocus: true, autocomplete: "address" %></td>
-            </tr>
-            <tr>
-              <td>PHONE No.</td>
-              <td><%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %></td>
-            </tr>
-            <tr>
-              <td>E-MAIL</td>
-              <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-            </tr>
-            <tr>
-              <td>CREDIT CARD</td>
-              <td>**** **** **** **98</td>
-            </tr>
-          </table>
-        </div>
-        <div class="col-2 acount-edit">
-          <%= f.submit '　SAVE　', class: "btn btn-outline-danger badge-pill acount-button" %>
-        </div>
-          <% end %>
+      <div class="col-7 mytable">
+        <table>
+          <tr>
+            <td>NAME</td>
+            <td><%= f.text_field :name, autofocus: true, autocomplete: "name" %></td>
+          </tr>
+          <tr>
+            <td>POST CODE</td>
+            <td><%= f.text_field :post_code, autofocus: true, autocomplete: "post_code" %></td>
+          </tr>
+          <tr>
+            <td>ADDRESS</td>
+            <td><%= f.text_field :address, autofocus: true, autocomplete: "address" %></td>
+          </tr>
+          <tr>
+            <td>PHONE No.</td>
+            <td><%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %></td>
+          </tr>
+          <tr>
+            <td>E-MAIL</td>
+            <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+          </tr>
+          <tr>
+            <td>CREDIT CARD</td>
+            <td>**** **** **** **98</td>
+          </tr>
+          <tr>
+            <td>PROFILE IMG</td>
+            <td>
+              <% if @user.image_id.present? %>
+                <%= image_tag @user.image_id.to_s, id: :img_prev, class: "profile-img" %>
+              <% else %>
+                <%= image_tag "no_image.jpg", id: :img_prev, class: "profile-img" %>
+              <% end %>
+              <%= f.file_field :image_id, id: :user_img %>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-2 acount-edit">
+        <%= f.submit '　SAVE　', class: "btn btn-outline-danger badge-pill acount-button" %>
+      </div>
     </div>
+    <% end %>
   </div>
 </div>

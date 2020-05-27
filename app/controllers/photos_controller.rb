@@ -1,7 +1,8 @@
 class PhotosController < ApplicationController
   before_action :authenticate_user!, except: %i[index show top]
+
   def top
-    @photos = Photo.all
+    @photos = Photo.all.limit(12)
   end
 
   def new
@@ -19,8 +20,8 @@ class PhotosController < ApplicationController
   end
 
   def index
-    @photo_ranks_pop = Photo.joins(:accesses).merge(Access.limit(8).order(number: :desc))
-    @photo_ranks_latest = Photo.all
+    @photo_ranks_pop = Photo.joins(:accesses).merge(Access.order(number: :desc)).page(params[:page]).per(10)
+    @photo_ranks_latest = Photo.order(created_at: "DESC").page(params[:page]).per(8)
   end
 
   def edit
@@ -49,6 +50,8 @@ class PhotosController < ApplicationController
 
   private
   def photo_params
-    params.require(:photo).permit(:title, :image_id, :caption)
+    params.require(:photo).permit(
+      :title, :image_id, :caption, :camera_id, :magnifier_id, :camera_maker_id
+      )
   end
 end

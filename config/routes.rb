@@ -5,6 +5,13 @@ Rails.application.routes.draw do
   resources :photos, only: [:top, :new, :create, :index, :show, :destroy, :edit] do
     resources :comments, only: [:create, :destroy]
     resources :likes, only: [:create, :destroy]
+    collection do
+      get 'get_cameras'
+    end
+  end
+
+  resources :camera_makers, only: [] do
+    resources :cameras, only: :index
   end
 
   resources :cameras, only: [:show] do

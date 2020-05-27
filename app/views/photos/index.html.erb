@@ -16,26 +16,26 @@
         <div id="popular" class="tab-pane active">
           <div style="margin-top: 20px; width: 100%;">
             <% @photo_ranks_pop.each do |photo|%>
-            <div class="image-box" style="width: 33%; padding: 10px;">
-              <div class="image">
-                <%= link_to photo_path(photo) do%>
-                  <%= image_tag photo.image_id.to_s %>
-                <% end %>
+              <div class="image-box" style="width: 33%; padding: 10px;">
+                <div class="image">
+                  <%= link_to photo_path(photo) do%>
+                    <%= image_tag photo.image_id.to_s %>
+                  <% end %>
+                </div>
               </div>
-            </div>
             <% end %>
           </div>
         </div>
         <div id="latest" class="tab-pane">
           <div style="margin-top: 20px; width: 100%;">
             <% @photo_ranks_latest.each do |photo|%>
-            <div class="image-box" style="width: 33%; padding: 10px;">
-              <div class="image">
-                <%=link_to photo_path(photo) do%>
-                  <%= image_tag photo.image_id.to_s %>
-                <% end %>
+              <div class="image-box" style="width: 33%; padding: 10px;">
+                <div class="image">
+                  <%=link_to photo_path(photo) do%>
+                    <%= image_tag photo.image_id.to_s %>
+                  <% end %>
+                </div>
               </div>
-            </div>
             <% end %>
           </div>
         </div>
@@ -43,17 +43,6 @@
           <img src="images/photo3.jpg" class="img-fluid" alt=""/>
         </div>
       </div>
-    </div>
-    <div style="margin-top: 20px; width: 100%;">
-      <% @photo_ranks_latest.each do |photo|%>
-      <div class="image-box" style="width: 33%; padding: 10px;">
-        <div class="image">
-          <%=link_to photo_path(photo) do%>
-            <%= image_tag photo.image_id.to_s %>
-          <% end %>
-        </div>
-      </div>
-      <% end %>
     </div>
   </div>
 </div>

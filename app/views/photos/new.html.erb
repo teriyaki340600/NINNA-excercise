@@ -13,6 +13,17 @@
       </div>
       <div class="col-6">
         <div class="form-group img-upload">
+          <div class="camera-maker-area">
+            <%= f.label :camera_maker_id, "CAMERA MAKER" %>
+            <% camera_maker_options = CameraMaker.order(:id).map { |cm| [cm.name, cm.id, data: {children_path: camera_maker_cameras_path(cm) }] } %>
+            <%= f.select :camera_maker_id, options_for_select(camera_maker_options), {selected: true, include_blank: true}, class: 'select_parent' %>
+          </div>
+          <div class="camera-area">
+            <%= f.label :camera_id, "CAMERA" %>
+            <% cameras = @photo.camera_maker.try(:cameras) || [] %>
+            <% camera_options = cameras.map{|c| [c.name, c.id]} %>
+            <%= f.select :camera_id, camera_options, {include_blank: true}, class: 'select-children' %>
+          </div>
           <%= f.label :title, "TITLE" %>
           <%= f.text_field :title, class:"form-control", placeholder:"Title" %>
           <%= f.label :caption, "CAPTION" %>
@@ -23,19 +34,3 @@
     </div>
   <% end %>
 </div>
-<script type="text/javascript">
-  $(function() {
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-    $('#img_prev').attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-        }
-    }
-    $("#user_img").change(function(){
-        readURL(this);
-    });
-  });
-</script>
