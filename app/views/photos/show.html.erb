@@ -20,8 +20,10 @@
           <tr>
             <td>BODY</td>
             <td>
-              <%= link_to @photo.camera do%>
-                <%= @photo.camera_maker.name %>　<%= @photo.camera.name %></td>
+              <% if @photo.camera.present? %>
+                <%= link_to @photo.camera do%>
+                  <%= @photo.camera_maker.name %>　<%= @photo.camera.name %></td>
+                <% end %>
               <% end %>
           </tr>
           <tr>

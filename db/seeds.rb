@@ -5,11 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-#Camera.create!(name: "EOS 5D",
-#               camera_maker_id: "NIKON"
-#              introduction: "最高の写真体験",
-#              image_id:
-#              File.open("./app/assets/images/EOS 5D.jpg"))
 #CameraMaker.create!([
 #              {:name => "NIKON"},
 #              {:name => "CANON"},
