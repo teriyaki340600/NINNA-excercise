@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create, :destroy]
   end
 
+  resources :magnifier_makers, only: [] do
+    resources :magnifiers, only: :index
+  end
+
   resources :magnifiers, only: [:show] do
     resources :reviews, only: [:create, :destroy]
   end

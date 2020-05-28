@@ -3,6 +3,8 @@ class Photo < ApplicationRecord
   belongs_to :user
   belongs_to :camera, optional: true
   belongs_to :camera_maker, optional: true
+  belongs_to :magnifier, optional: true
+  belongs_to :magnifier_maker, optional: true
 
   mount_uploader :image_id, PhotosUploader
 

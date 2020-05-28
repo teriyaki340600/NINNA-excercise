@@ -5,4 +5,9 @@ class MagnifiersController < ApplicationController
     @review = Review.new
   end
 
+  def index
+    magnifier_maker = MagnifierMaker.find(params[:magnifier_maker_id])
+    render json: magnifier_maker.cameras.select(:id, :name)
+  end
+
 end

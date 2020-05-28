@@ -19,7 +19,10 @@
         <table>
           <tr>
             <td>BODY</td>
-            <td>NIKON D600</td>
+            <td>
+              <%= link_to @photo.camera do%>
+                <%= @photo.camera_maker.name %>　<%= @photo.camera.name %></td>
+              <% end %>
           </tr>
           <tr>
             <td>LENS</td>

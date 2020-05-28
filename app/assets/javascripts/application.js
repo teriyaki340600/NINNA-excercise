@@ -30,32 +30,37 @@ $(function() {
       readURL(this);
   });
 
-//　select box
-  return (function() {
+//　select box(camera)
+  return (function () {
     var replaceChildrenOptions, replaceSelectOptions;
-    replaceSelectOptions = function($select, results) {
+    replaceSelectOptions = function ($select, results) {
       $select.html($('<option>'));
-      return $.each(results, function() {
+      $select.children().remove();
+      return $.each(results, function () {
         var option;
         option = $('<option>').val(this.id).text(this.name);
         return $select.append(option);
       });
     };
-    replaceChildrenOptions = function() {
-      var $selectChildren, childrenPath;
-      childrenPath = $(this).find('option:selected').data().childrenPath;
-      console.log($(this).find('option:selected').data())
-      $selectChildren = $(this).closest('form').find('.select-children');
+    replaceChildrenOptions = function () {
+      var $selectChildren;
+      $selectChildren = $('#photo_camera_id');
+      const element = document.getElementById('photo_camera_maker_id');
+      const index = element.selectedIndex;
+      // 何も選択されていない場合は早期リターンする
+      if (index === 0) {
+        return $selectChildren.children().remove();
+      };
+      const childrenPath = element.options[index].dataset.childrenPath;
+      // replaceSelectOptions が jquery object を要求しているため
       if (childrenPath != null) {
-        console.log('1111')
-        console.log(childrenPath)
         return $.ajax({
           url: childrenPath,
           dataType: "json",
-          success: function(results) {
+          success: function (results) {
             return replaceSelectOptions($selectChildren, results);
           },
-          error: function(XMLHttpRequest, textStatus, errorThrown) {
+          error: function (XMLHttpRequest, textStatus, errorThrown) {
             console.error("Error occurred in replaceChildrenOptions");
             console.log("XMLHttpRequest: " + XMLHttpRequest.status);
             console.log("textStatus: " + textStatus);
@@ -66,8 +71,9 @@ $(function() {
         return replaceSelectOptions($selectChildren, []);
       }
     };
-    return $('.select-parent').on({
-      'change': replaceChildrenOptions()
-    });
+    const element = document.getElementById('photo_camera_maker_id');
+    element.addEventListener('change', () => {
+      replaceChildrenOptions();
+    })
   })();
 });

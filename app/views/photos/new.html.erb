@@ -16,7 +16,7 @@
           <div class="camera-maker-area">
             <%= f.label :camera_maker_id, "CAMERA MAKER" %>
             <% camera_maker_options = CameraMaker.order(:id).map { |cm| [cm.name, cm.id, data: {children_path: camera_maker_cameras_path(cm) }] } %>
-            <%= f.select :camera_maker_id, options_for_select(camera_maker_options), {selected: true, include_blank: true}, class: 'select_parent' %>
+            <%= f.select :camera_maker_id, options_for_select(camera_maker_options), { selected: @photo.camera_maker_id, prompt: '選択して下さい', class: 'select_parent' } %>
           </div>
           <div class="camera-area">
             <%= f.label :camera_id, "CAMERA" %>
