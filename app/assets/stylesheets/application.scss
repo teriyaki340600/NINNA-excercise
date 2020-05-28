@@ -29,7 +29,7 @@
 
 @font-face {
   font-family: MANIFESTO;
-  src: asset_url('MANIFESTO.ttf');
+  src: url(asset-path('MANIFESTO.ttf')) format("truetype");
 }
 
 .ninna {
