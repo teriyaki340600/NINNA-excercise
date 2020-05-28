@@ -32,6 +32,7 @@ $(function() {
 
 //　select box(camera)
   return (function () {
+    console.log('eeeeeee');
     var replaceChildrenOptions, replaceSelectOptions;
     replaceSelectOptions = function ($select, results) {
       $select.html($('<option>'));
