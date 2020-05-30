@@ -25,10 +25,6 @@
 画像の投稿、撮影機材のレンタル
 
 ## VERSION
-### Wire Frame（未完成）
-・ユーザー側
-https://drive.google.com/file/d/1rjz1QLVnijaY0F9dag5I3Rd3QlKdzdlm/view?usp=sharing  <br>
-
 ### List of Features
 https://docs.google.com/spreadsheets/d/18sqA3soViRUk87PJ4SHhrQvYM9Z2Amt3EGQ6o259c80/edit#gid=0
 
