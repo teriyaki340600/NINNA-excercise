@@ -20,8 +20,8 @@ class PhotosController < ApplicationController
   end
 
   def index
-    @photo_ranks_pop = Photo.joins(:accesses).merge(Access.order(number: :desc)).page(params[:page]).per(10)
-    @photo_ranks_latest = Photo.order(created_at: "DESC").page(params[:page]).per(8)
+    @photo_ranks_pop = Photo.joins(:accesses).merge(Access.order(number: :desc)).page(params[:page]).per(20)
+    @photo_ranks_latest = Photo.order(created_at: "DESC").page(params[:page]).per(20)
   end
 
   def edit
