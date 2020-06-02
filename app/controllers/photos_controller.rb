@@ -1,4 +1,6 @@
 class PhotosController < ApplicationController
+  require 'Vision'
+
   before_action :authenticate_user!, except: %i[index show top]
 
   def top
@@ -12,10 +14,18 @@ class PhotosController < ApplicationController
   def create
     @photo = Photo.new(photo_params)
     @photo.user_id = current_user.id
-    if @photo.save
+    result = ActiveRecord::Base.transaction do
+      @photo.save
+      response = Vision.get_image_data(@photo)
+      raise ActiveRecord::Rollback if response.values.include?('LIKELY') or response.values.include?('VERY_LIKELY')
+      true
+    end
+    binding.pry
+    if result
       redirect_to photo_path(@photo.id)
     else
-      render :new
+      flash[:alert] = "不適切な画像を検出したため投稿を中止しました"
+      redirect_to new_photo_path
     end
   end
 

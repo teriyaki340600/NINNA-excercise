@@ -1,4 +1,5 @@
 <div class="container">
+  <%= flash[:alert] %>
   <%= form_for(@photo, url: photos_path) do |f| %>
     <div class="row" style="margin-top: 20px;">
       <div class="col-6">
