@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  require 'Vision'
+  #require 'Vision'
 
   before_action :authenticate_user!, except: %i[index show top]
 
