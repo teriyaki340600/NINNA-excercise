@@ -20,7 +20,6 @@ class PhotosController < ApplicationController
       raise ActiveRecord::Rollback if response.values.include?('LIKELY') or response.values.include?('VERY_LIKELY')
       true
     end
-    binding.pry
     if result
       redirect_to photo_path(@photo.id)
     else
