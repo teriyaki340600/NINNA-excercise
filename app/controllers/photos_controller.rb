@@ -16,6 +16,7 @@ class PhotosController < ApplicationController
     @photo.user_id = current_user.id
     result = ActiveRecord::Base.transaction do
       @photo.save
+      #sleep 4
       response = Vision.get_image_data(@photo)
       raise ActiveRecord::Rollback if response.values.include?('LIKELY') or response.values.include?('VERY_LIKELY')
       true
@@ -45,7 +46,7 @@ class PhotosController < ApplicationController
     @comment = Comment.new
     @photo = Photo.find(params[:id])
     require 'exifr/jpeg'
-    @exif = EXIFR::JPEG::new(Rails.root.to_s + '/public' + @photo.image_id.to_s)
+    @exif = EXIFR::JPEG::new(open(@photo.image_id.url))
   end
 
   def destroy
