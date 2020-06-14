@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-=begin
+
 CameraMaker.create!([
               {:name => "NIKON"},
               {:name => "CANON"},
@@ -15,6 +15,7 @@ CameraMaker.create!([
               {:name => "LUMIX"},
               {:name => "FUJIFILM"}
               ])
+=begin
 MagnifierMaker.create!([
               {:name => "NIKON"},
               {:name => "CANON"},
@@ -34,7 +35,7 @@ Magnifier.create!(name: "AF-S NIKKOR 24-70mm f/2.8E ED VR",
               image_id:
               File.open("./app/assets/images/NIK2470mm2.8VR.jpg"))
 =end
-=begin
+sleep 5
 Camera.create!(name: "Z7",
                camera_maker_id: 1,
               introduction: "最高画質のミラーレス",
@@ -60,7 +61,6 @@ Camera.create!(name: "D5",
               introduction: "あらゆる状況下で、瞬間を逃さず高品位な映像表現を可能にする。ニコンFXフォーマットデジタル一眼レフカメラD5。",
               image_id:
               File.open("./app/assets/images/D5.jpg"))
-=end
 Camera.create!(name: "D7500",
                camera_maker_id: 1,
               introduction: "D500の高画質と高速性能を軽量・薄型ボディーに凝縮。ニコンDXフォーマットデジタル一眼レフカメラD7500。",
