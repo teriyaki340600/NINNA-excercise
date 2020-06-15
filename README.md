@@ -1,4 +1,5 @@
 # NINNA(ニンナ)
+<img width="983" alt="スクリーンショット 2020-06-15 15 33 17" src="https://user-images.githubusercontent.com/60866177/84625317-fa82a600-af1d-11ea-9e8c-168ab1b1c503.png">
 ## OVERVIEW
 カメラ好き・写真家向けの画像投稿/撮影機材サブスクサイト:camera:
 
