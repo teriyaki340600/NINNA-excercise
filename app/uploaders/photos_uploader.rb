@@ -43,6 +43,7 @@ class PhotosUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
+  # Visionの容量オーバー回避のために作成。このthumbをVisionに投げる
   version :thumb do
     process resize_to_fit: [200, 200]
   end

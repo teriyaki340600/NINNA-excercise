@@ -16,7 +16,6 @@ class PhotosController < ApplicationController
     @photo.user_id = current_user.id
     result = ActiveRecord::Base.transaction do
       @photo.save
-      #sleep 4
       response = Vision.get_image_data(@photo.image_id)
       raise ActiveRecord::Rollback if response.values.include?('LIKELY') or response.values.include?('VERY_LIKELY')
       true
