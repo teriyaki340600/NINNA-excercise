@@ -1,0 +1,41 @@
+<div class="row" style="margin: 0px;">
+  <div class="top-image" style="width:100%; height:500px; background-image:url(<%= asset_path('leaves.jpg')%>);" >
+    <div style="color:white; font-size:250%; margin:70px;">
+      <strong>無料で写真を投稿・共有。<br>機材のサブスクも月3900円〜。</strong>
+    </div>
+    <div style="margin-left: 90px;">
+      <% if user_signed_in? %>
+        <%= link_to user_path(current_user.id) do%>
+          <button type="button" class="btn btn-lg btn-light badge-pill">　MY PAGE　</button>
+        <% end %>
+      <% else %>
+        <%=link_to new_user_registration_path do%>
+          <button type="button" class="btn btn-lg btn-light badge-pill">　　SIGN UP　　</button>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="container">
+    <div style="padding: 40px 0px 30px 0px;">
+      <center style="font-size: 200%; font-weight: bold;">
+        <strong>EXPLORE  AND  POST<br>YOUR  MARVELOUS  PHOTOS</strong>
+      </center>
+    </div>
+    <div style="margin-top: 40px; width: 100%; height: 85%;">
+      <% @photos.each do |photo|%>
+      <div class="image-box" style="width: 33%; padding: 10px;">
+        <div class="image">
+          <%=link_to photo_path(photo) do%>
+            <%= image_tag photo.image_id.to_s %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <div style="text-align: center;">
+      <%= link_to photos_path do %>
+        <button type="button" class="btn btn-outline-secondary rounded-0">　SEE MORE　</button>
+      <% end %>
+    </div>
+  </div>
+</div>

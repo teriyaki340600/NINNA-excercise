@@ -1,0 +1,22 @@
+<div class="container show-container">
+  <div class="form-box">
+    <div class="form-title">
+      <p>LOGIN TO YOUR ACCOUNT</p>
+    </div>
+    <div class="mail-pass">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <p class="ninna">NINNA</p>
+        <div class="mail-pass-input">
+          <%= f.email_field :email, autofocus: true, class:"form-control", id:"inputEmail", placeholder:"E-MAIL"%>
+        </div>
+        <div class="mail-pass-input">
+          <%= f.password_field :password, autocomplete: "off", class:"form-control", id:"inputPassword", placeholder:"PASSWORD" %>
+        </div>
+        <div class="mail-pass-input">
+          <%= f.submit "LOGIN", class:"btn btn-lg btn-block" %>
+          <%= link_to 'Create an account', new_user_registration_path %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

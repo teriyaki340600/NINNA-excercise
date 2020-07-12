@@ -1,0 +1,108 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+@font-face {
+  font-family: MANIFESTO;
+  src: url(asset-path('MANIFESTO.ttf')) format("truetype");
+}
+
+.ninna {
+  font-family: 'MANIFESTO';
+}
+
+.wrapper {
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 300px;
+  box-sizing: border-box;
+}
+
+header {
+  box-shadow: 0px 0px 10px;
+}
+
+footer {
+  width: 100%;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 30px 0;
+  position: absolute;
+  bottom: 0;
+}
+
+.icon {
+  margin: 5px;
+}
+
+li {
+  list-style: none;
+}
+
+.top-image {
+  clip-path: polygon(50% 0%, 100% 0, 100% 35%, 100% 79%, 84% 89%, 61% 86%, 20% 95%, 0 89%, 0 47%, 0 0);
+}
+
+.image-box {
+  float: left;
+}
+
+.image {
+  position: relative;
+  width: auto;
+  height: 330px;
+  max-width: 100%;
+}
+
+.image img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  max-height: 320px;
+}
+
+/* マイページの画像部分*/
+.profile-img {
+  width: auto;
+  height: 60px;
+}
+/* 以上 */
+
+/*
+  .image-index-ext {
+    border: 10px solid black;
+}
+*/
+
+
+
+
+
