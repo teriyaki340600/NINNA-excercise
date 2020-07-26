@@ -22,9 +22,10 @@
             <td>
               <% if @photo.camera.present? %>
                 <%= link_to @photo.camera do%>
-                  <%= @photo.camera_maker.name %>　<%= @photo.camera.name %></td>
+                  <%= @photo.camera_maker.name %>　<%= @photo.camera.name %>
                 <% end %>
               <% end %>
+            </td>
           </tr>
           <tr>
             <td>LENS</td>
