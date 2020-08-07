@@ -1,8 +1,7 @@
 <p>Hello <%= @email %>!</p>
 
 <% if @resource.try(:unconfirmed_email?) %>
-  <p>お客様のメールアドレスがこちらに変更されたました。
-    We're contacting you to notify you that your email is being changed to <%= @resource.unconfirmed_email %>.</p>
+  <p>お客様のメールアドレスがこちらに変更されたました。<%= @resource.unconfirmed_email %>.</p>
 <% else %>
   <p>We're contacting you to notify you that your email has been changed to <%= @resource.email %>.</p>
 <% end %>
