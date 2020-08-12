@@ -3,5 +3,5 @@
 <% if @resource.try(:unconfirmed_email?) %>
   <p>お客様のメールアドレスがこちらに変更されました。<%= @resource.unconfirmed_email %>.</p>
 <% else %>
-  <p>お客様のメールアドレスがこちらに変更されました。<%= @resource.email %>.</p>
+  <p>お客様のメールアドレスがこちらに変更されました<%= @resource.email %>.</p>
 <% end %>
